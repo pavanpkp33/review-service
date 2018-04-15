@@ -15,4 +15,7 @@ public interface DataServiceProxy {
     @PostMapping("/api/v1/assignment/create")
     ServiceResponse addAssignment(@RequestParam Map<String, Object> params);
 
+    @PostMapping("/api/v1/assignment/get")
+    ServiceResponse getAssignment(@RequestParam Map<String, String> params);
+
 }

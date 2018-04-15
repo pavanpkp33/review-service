@@ -26,11 +26,17 @@ public class AssignmentController {
 
     @GetMapping(value = "/conferences/{confId}/assignment/{submissionId}")
     public ServiceResponse getAssignmentForSubmission(@PathVariable String submissionId, @PathVariable String confId){
+        return assignmentService.getAssignments(submissionId);
+    }
+
+    @DeleteMapping(value = "/conferences/{confId}/assignment/{submissionId}")
+    public ServiceResponse deleteAssignmentBySubmission(@RequestBody Map<String, Object> params, @PathVariable String confId,
+                                                        @PathVariable String submissionId){
         return null;
     }
 
-    @DeleteMapping(value = "/conferences/assignment/{submissionId}")
-    public ServiceResponse deleteAssingment(@PathVariable String submissionId){
+    @DeleteMapping(value = "/conferences/assignment/{assignmentId}")
+    public ServiceResponse deleteAssingment(@PathVariable String assignmentId){
         return null;
     }
 
