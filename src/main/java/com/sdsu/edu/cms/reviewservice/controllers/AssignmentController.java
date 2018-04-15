@@ -30,13 +30,13 @@ public class AssignmentController {
     }
 
     @DeleteMapping(value = "/conferences/{confId}/assignment/{submissionId}")
-    public ServiceResponse deleteAssignmentBySubmission(@RequestBody Map<String, Object> params, @PathVariable String confId,
+    public ServiceResponse deleteAssignmentBySubmission( @PathVariable String confId,
                                                         @PathVariable String submissionId){
-        return null;
+        return assignmentService.deleteAssignment(confId, submissionId);
     }
 
     @DeleteMapping(value = "/conferences/assignment/{assignmentId}")
-    public ServiceResponse deleteAssingment(@PathVariable String assignmentId){
+    public ServiceResponse deleteAssignment(@PathVariable String assignmentId){
         return null;
     }
 
