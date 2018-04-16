@@ -58,8 +58,32 @@ public class ReviewsService {
     public ServiceResponse getReviewByReviewId(String rid){
         Map<String, String> params = new HashMap<>();
         params.put("rid", rid);
-        ServiceResponse response = null;
+        ServiceResponse response = dataServiceProxy.getReviewsByRid(params);
+        String res = response.getData().get(0).toString();
+        Type type = new TypeToken<List<Review>>() {}.getType();
+        List<Review> reviews = gson.fromJson(res, type);
+        List<Object> reviewsList = new ArrayList<>();
+        for(Review r : reviews){
+            reviewsList.add(r);
+        }
 
+        response.setData(reviewsList);
         return response;
+    }
+
+    public ServiceResponse updateReview(Review review){
+        return dataServiceProxy.updateReviews(review);
+    }
+
+    public ServiceResponse publishReview(String sid){
+        Map<String, String> params = new HashMap<>();
+        params.put("sid", sid);
+        return dataServiceProxy.publishReviews(params);
+    }
+
+    public ServiceResponse deleteReview(String reviewId) {
+        Map<String, String> params = new HashMap<>();
+        params.put("rid", reviewId);
+        return dataServiceProxy.deleteReviews(params);
     }
 }

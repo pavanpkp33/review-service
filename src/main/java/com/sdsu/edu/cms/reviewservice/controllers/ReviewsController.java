@@ -48,16 +48,21 @@ public class ReviewsController {
 
     @PutMapping("/reviews/{reviewId}")
     public ServiceResponse updateReview(@RequestBody Review payLoad, @PathVariable String reviewId){
-        return null;
+        payLoad.setReviewId(reviewId);
+        return reviewsService.updateReview(payLoad);
     }
 
-    @PostMapping("/reviews/{conferenceId}/{submissionId}/publish")
-    public ServiceResponse publishReviews(@RequestBody Map<String, Object> body, @PathVariable String conferenceId,
+    @PatchMapping("/reviews/{conferenceId}/{submissionId}/publish")
+    public ServiceResponse publishReviews(@PathVariable String conferenceId,
                                           @PathVariable String submissionId){
 
-        return null;
+        return reviewsService.publishReview(submissionId);
     }
 
+    @DeleteMapping("/reviews/{reviewId}")
+    public ServiceResponse deleteReview(@PathVariable String reviewId){
+        return reviewsService.deleteReview(reviewId);
+    }
 
 
 

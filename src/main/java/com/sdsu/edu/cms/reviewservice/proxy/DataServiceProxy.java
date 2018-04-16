@@ -35,4 +35,16 @@ public interface DataServiceProxy {
     @PostMapping("/api/v1/reviews/get/sid")
     ServiceResponse getReviewsBySid(@RequestParam Map<String, String> mp);
 
+    @PostMapping("/api/v1/reviews/get/rid")
+    ServiceResponse getReviewsByRid(@RequestParam Map<String, String> params);
+
+    @PostMapping("/api/v1/reviews/update")
+    ServiceResponse updateReviews(@RequestBody Review review);
+
+    @PostMapping("/api/v1/reviews/publish")
+    ServiceResponse publishReviews(@RequestParam Map<String, String> params);
+
+    @PostMapping("/api/v1/reviews/delete")
+    ServiceResponse deleteReviews(@RequestParam Map<String, String> params);
+
 }
