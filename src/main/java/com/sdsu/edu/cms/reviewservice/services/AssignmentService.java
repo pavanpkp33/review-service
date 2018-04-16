@@ -56,4 +56,10 @@ public class AssignmentService {
         mp.put("sid", submissionId);
         return dataServiceProxy.deleteAssignment(mp);
     }
+
+    public ServiceResponse deleteAssignmentById(String assignmentId){
+        Map<String, String> id = new HashMap<>();
+        id.put("assignmentId", assignmentId);
+        return dataServiceProxy.deleteAssignmentById(id);
+    }
 }

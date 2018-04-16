@@ -37,7 +37,7 @@ public class AssignmentController {
 
     @DeleteMapping(value = "/conferences/assignment/{assignmentId}")
     public ServiceResponse deleteAssignment(@PathVariable String assignmentId){
-        return null;
+        return assignmentService.deleteAssignmentById(assignmentId);
     }
 
 }
