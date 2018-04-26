@@ -86,4 +86,39 @@ public class ReviewsService {
         params.put("rid", reviewId);
         return dataServiceProxy.deleteReviews(params);
     }
+
+    public ServiceResponse getReviewsByConference(String conferenceId) {
+
+        Map<String, String> params = new HashMap<>();
+        params.put("cid", conferenceId);
+        ServiceResponse response = dataServiceProxy.getReviewsByCid(params);
+        String res = response.getData().get(0).toString();
+        Type type = new TypeToken<List<Review>>() {}.getType();
+        List<Review> reviews = gson.fromJson(res, type);
+        List<Object> reviewsList = new ArrayList<>();
+        for(Review r : reviews){
+            reviewsList.add(r);
+        }
+
+        response.setData(reviewsList);
+        return response;
+    }
+
+    public ServiceResponse getReviewsByUserId(String conferenceId, String uid) {
+        Map<String, String> params = new HashMap<>();
+        params.put("cid", conferenceId);
+        params.put("uid", uid);
+        ServiceResponse response = dataServiceProxy.getReviewsByUid(params);
+        String res = response.getData().get(0).toString();
+        Type type = new TypeToken<List<Review>>() {}.getType();
+        List<Review> reviews = gson.fromJson(res, type);
+        List<Object> reviewsList = new ArrayList<>();
+        for(Review r : reviews){
+            reviewsList.add(r);
+        }
+
+        response.setData(reviewsList);
+        return response;
+
+    }
 }

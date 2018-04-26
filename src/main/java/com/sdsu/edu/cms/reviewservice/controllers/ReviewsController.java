@@ -40,6 +40,15 @@ public class ReviewsController {
 
     }
 
+    @GetMapping("/reviews/{conferenceId}/review")
+    public ServiceResponse getReviewsByConference(@PathVariable String conferenceId){
+        return reviewsService.getReviewsByConference(conferenceId);
+    }
+
+    @GetMapping("/reviews/{conferenceId}/user/{uid}")
+    public ServiceResponse getReviewByUserId(@PathVariable String conferenceId, @PathVariable String uid){
+        return reviewsService.getReviewsByUserId(conferenceId, uid);
+    }
     @GetMapping("/reviews/{reviewId}")
     public ServiceResponse getReviewById(@PathVariable String reviewId){
 

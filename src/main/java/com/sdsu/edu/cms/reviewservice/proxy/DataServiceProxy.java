@@ -50,4 +50,8 @@ public interface DataServiceProxy {
     @PostMapping("/api/v1/reviews/delete")
     ServiceResponse deleteReviews(@RequestParam Map<String, String> params);
 
+    @PostMapping("/api/v1/reviews/get/cid")
+    ServiceResponse getReviewsByCid(@RequestParam Map<String, String> params);
+    @PostMapping("/api/v1/reviews/get/uid")
+    ServiceResponse getReviewsByUid(@RequestParam  Map<String, String> params);
 }
