@@ -62,4 +62,21 @@ public class AssignmentService {
         id.put("assignmentId", assignmentId);
         return dataServiceProxy.deleteAssignmentById(id);
     }
+
+    public ServiceResponse getAssignmentByUid(String cid, String uid) {
+        Map<String, String> mp = new HashMap<>();
+        mp.put("cid", cid);
+        mp.put("uid", uid);
+        ServiceResponse response =  dataServiceProxy.getAssignmentByUid(mp);
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Assignment>>() {}.getType();
+        List<Assignment> assignments = gson.fromJson(response.getData().get(0).toString(), type);
+        List<Object> clientResponse = new ArrayList<>();
+        for(Assignment a : assignments){
+            clientResponse.add(a);
+        }
+        response.setData(clientResponse);
+        return response;
+
+    }
 }

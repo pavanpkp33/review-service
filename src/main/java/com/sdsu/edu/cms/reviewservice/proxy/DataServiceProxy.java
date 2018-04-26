@@ -20,6 +20,9 @@ public interface DataServiceProxy {
     @PostMapping("/api/v1/assignment/get")
     ServiceResponse getAssignment(@RequestParam Map<String, String> params);
 
+    @PostMapping("/api/v1/assignment/get/id")
+    ServiceResponse getAssignmentByUid(@RequestParam Map<String, String> params);
+
     @PostMapping("/api/v1/assignment/delete")
     ServiceResponse deleteAssignment(@RequestParam Map<String, Object> params);
 

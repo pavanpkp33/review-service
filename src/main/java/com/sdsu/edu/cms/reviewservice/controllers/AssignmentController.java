@@ -29,6 +29,12 @@ public class AssignmentController {
         return assignmentService.getAssignments(submissionId);
     }
 
+    @GetMapping(value = "/conferences/{cid}/assignment/users/{uid}")
+    public ServiceResponse getAssignmentByReviewerId(@PathVariable String cid, @PathVariable String uid){
+        return assignmentService.getAssignmentByUid(cid, uid);
+
+    }
+
     @DeleteMapping(value = "/conferences/{confId}/assignment/{submissionId}")
     public ServiceResponse deleteAssignmentBySubmission( @PathVariable String confId,
                                                         @PathVariable String submissionId){
